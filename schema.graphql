@@ -1,0 +1,11 @@
+type Swap @entity(immutable: true) {
+  id: ID!
+  sender: Bytes!
+  amount0In: BigDecimal!
+  amount1In: BigDecimal!
+  amount0Out: BigDecimal!
+  amount1Out: BigDecimal!
+  to: Bytes!
+  timestamp: BigInt!
+  transaction: Bytes!
+}

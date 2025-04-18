@@ -1,0 +1,24 @@
+specVersion: 0.0.4
+schema:
+  file: schema.graphql
+dataSources:
+  - kind: ethereum/contract
+    name: T24LP
+    network: matic
+    source:
+      address: "0x0a678d15068669aa7af0211bff0b78a95e5b1733"
+      abi: UniswapV2Pair
+      startBlock: 54321000
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.6
+      language: wasm/assemblyscript
+      entities:
+        - Swap
+      abis:
+        - name: UniswapV2Pair
+          file: T24LP\UniswapV2Pair.json
+      eventHandlers:
+        - event: Swap(indexed address,uint256,uint256,uint256,uint256,indexed address)
+          handler: handleSwap
+      file: T24LP\T24LP.wasm
